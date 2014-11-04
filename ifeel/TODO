@@ -1,0 +1,23 @@
+TODO for iFeel
+
+-------------------------------------------------------------------------------
+
+Find the source of this, it happens when you insmod ifeel.o when input.o isn't
+loaded:
+
+  root@cluster1:iFeel > insmod ifeel.o
+  ifeel.o: ifeel.o: unresolved symbol input_register_device
+  ifeel.o: ifeel.o: unresolved symbol input_unregister_device
+  ifeel.o: ifeel.o: unresolved symbol input_event
+
+
+depmod also gives an error similar to this:
+
+  root@cluster1:iFeel > depmod -a
+  depmod: *** Unresolved symbols in /lib/modules/2.4.21-ff/kernel/drivers/input/ifeel.o
+
+
+
+-------------------------------------------------------------------------------
+
+

@@ -1,0 +1,62 @@
+Introduction :
+
+Thankyou for downloading the iFeel USB driver. 
+
+At the current time, the driver hasn't been through a lot of testing so
+USE IT AT YOUR OWN RISK.
+
+It was also written in a very short amount of time so don't expect a
+lot.  I plan to add to it eventually, but at the moment I have more
+assignments than time to do them in.  So, if you want to help with this
+project, by all means let me know, and if you have any comments, let me
+know.
+
+Oh yeah, if you really, really want support for your vibrating mouse,
+let me know and things might move a little quicker.
+
+You can reach me at 
+Josh Bobruk <photi@users.sourceforce.net>
+
+Have fun buzzing.
+
+**************************************************
+
+Installing :
+To use the iFeel driver, you must have a Logitech iFeel mouse (not sure
+about the mouseman) with vibrating support and a current 2.4.* kernel
+
+All the following steps need to be run as root.
+
+1) Edit the Makefile to point to your current kernel source directory
+
+2) Run 'make node' to make a devfs node for the mouse.
+
+3) Run 'make all' to create a kernel module and a userspace program to
+   send buzz requests to the mouse
+
+4) Make sure that usbmouse and hid aren't in your kernel ie
+	rmmod hid
+	rmmod usbmouse
+   and input is
+	insmod input
+
+5) Run 'make ins' to insert the module into your kernel.  If all goes
+   well, you should see a message saying iFeel is registered.
+
+6) In order for normal users to use the ifeel0 device, you will need to
+   change the permissions on the ifeel0 file with to allow normal users
+   to use it.
+   For now, just use 
+     chown <user> ifeel0
+   It isn't the best way to do it, but for now, it's only for testing.
+
+Useage:
+iFeel uses 'input' to process mouse movement and click events so point
+anything that uses the mouse to /dev/input/mice. 
+
+To access the vibrate functionality, use the ifeel_send command.  This
+requires the ifeel node to be created with 'make node'
+
+For the more adventurous types, look at the code for ifeel_send to see
+how to send requests directly.
+

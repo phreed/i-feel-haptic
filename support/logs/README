@@ -1,0 +1,9 @@
+22 Jul 2001
+
+This directory contains dumps of the USB stream as the iFeel mouse
+was vibrating. At the time of this dump, the mouse sensor was taped over
+and the mouse was flipped upside down to prevent any movement data
+from being captured. I used another mouse to control the cursor.
+
+The ifeel.data file is just the data that seems to be important. They are
+all control data transfers. Not sure what to make of it yet...
